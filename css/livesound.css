@@ -1,0 +1,356 @@
+/* ================================
+   Live Sound Page Styles
+   Neon Light Blue Theme
+   ================================ */
+
+/* Override accent color to neon light blue */
+.livesound-theme {
+    --accent: #00d4ff;
+    --accent-glow: rgba(0, 212, 255, 0.5);
+}
+
+/* Hero adjustments for Live Sound page */
+.livesound-hero {
+    min-height: 60vh;
+    padding-top: 120px;
+    background:
+        linear-gradient(135deg, transparent 40%, rgba(0, 212, 255, 0.03) 100%),
+        radial-gradient(ellipse at 80% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 50%);
+}
+
+.livesound-hero .hero-visual {
+    display: none;
+}
+
+/* Active nav link styling - keep pink for other links, blue for Live Sound */
+.nav-menu a.active {
+    color: #00d4ff;
+}
+
+/* ================================
+   Alternating Section Backgrounds
+   ================================ */
+.livesound-theme #services {
+    background: var(--gray-900);
+    border-top: 1px solid var(--gray-800);
+    border-bottom: 1px solid var(--gray-800);
+}
+
+.livesound-theme #testimonials {
+    background: var(--gray-900);
+    border-top: 1px solid var(--gray-800);
+    border-bottom: 1px solid var(--gray-800);
+}
+
+/* ================================
+   Services Section
+   ================================ */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.service-card {
+    background: var(--gray-900);
+    border: 1px solid var(--gray-800);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: all var(--transition-normal);
+}
+
+.service-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.service-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+.service-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.service-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.service-card p {
+    color: var(--gray-400);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ================================
+   Equipment Section
+   ================================ */
+.equipment-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.equipment-category h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--accent);
+    color: var(--accent);
+}
+
+.equipment-list {
+    list-style: none;
+}
+
+.equipment-list li {
+    padding: 0.5rem 0;
+    color: var(--gray-300);
+    border-bottom: 1px solid var(--gray-800);
+    font-size: 0.95rem;
+}
+
+.equipment-list li:last-child {
+    border-bottom: none;
+}
+
+/* ================================
+   Events Section
+   ================================ */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.event-card {
+    background: var(--gray-900);
+    border: 1px solid var(--gray-800);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.event-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.event-card:hover {
+    border-color: var(--gray-700);
+}
+
+.event-card:hover::before {
+    opacity: 1;
+}
+
+.event-year {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+.event-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0.5rem 0 0.25rem;
+}
+
+.event-role {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+}
+
+/* ================================
+   Gallery Section
+   ================================ */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.gallery-item {
+    aspect-ratio: 4/3;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--gray-900);
+    border: 2px dashed var(--gray-700);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-600);
+    gap: 0.5rem;
+}
+
+.gallery-placeholder svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.5;
+}
+
+.gallery-placeholder span {
+    font-size: 0.875rem;
+}
+
+/* ================================
+   Testimonials Section
+   ================================ */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.testimonial-card {
+    background: var(--gray-900);
+    border: 1px solid var(--gray-800);
+    border-radius: 8px;
+    padding: 2rem;
+    position: relative;
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 4rem;
+    font-family: Georgia, serif;
+    color: var(--accent);
+    opacity: 0.3;
+    line-height: 1;
+}
+
+.testimonial-card blockquote {
+    margin: 0;
+    padding-left: 1rem;
+}
+
+.testimonial-card blockquote p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--gray-300);
+    font-style: italic;
+}
+
+.testimonial-author {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--gray-800);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.author-name {
+    font-weight: 600;
+    color: var(--white);
+}
+
+.author-role {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+}
+
+/* ================================
+   CTA Section
+   ================================ */
+.cta-section {
+    background: linear-gradient(180deg, transparent, var(--gray-900));
+}
+
+.cta-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 3rem 0;
+}
+
+.cta-content h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.cta-content p {
+    color: var(--gray-400);
+    margin-bottom: 2rem;
+}
+
+/* ================================
+   Responsive Adjustments
+   ================================ */
+@media (max-width: 768px) {
+    .livesound-hero {
+        min-height: 50vh;
+        padding-top: 100px;
+    }
+
+    .services-grid,
+    .events-grid,
+    .gallery-grid,
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .equipment-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cta-content h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .equipment-content {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card,
+    .testimonial-card {
+        padding: 1.5rem;
+    }
+}

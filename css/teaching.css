@@ -1,0 +1,312 @@
+/* ================================
+   Teaching Page Styles
+   Neon Orange Theme
+   ================================ */
+
+/* Override accent color to neon orange */
+.teaching-theme {
+    --accent: #ff6b00;
+    --accent-glow: rgba(255, 107, 0, 0.5);
+}
+
+/* Hero adjustments for Teaching page */
+.teaching-hero {
+    min-height: 60vh;
+    padding-top: 120px;
+    background:
+        linear-gradient(135deg, transparent 40%, rgba(255, 107, 0, 0.03) 100%),
+        radial-gradient(ellipse at 80% 20%, rgba(255, 107, 0, 0.08) 0%, transparent 50%);
+}
+
+.teaching-hero .hero-visual {
+    display: none;
+}
+
+/* Active nav link styling */
+.nav-menu a.active {
+    color: #ff6b00;
+}
+
+/* ================================
+   Alternating Section Backgrounds
+   ================================ */
+.teaching-theme #philosophy {
+    background: var(--gray-900);
+    border-top: 1px solid var(--gray-800);
+    border-bottom: 1px solid var(--gray-800);
+}
+
+.teaching-theme #testimonials {
+    background: var(--gray-900);
+    border-top: 1px solid var(--gray-800);
+    border-bottom: 1px solid var(--gray-800);
+}
+
+/* ================================
+   Philosophy Section
+   ================================ */
+.philosophy-content {
+    max-width: 800px;
+}
+
+.philosophy-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.philosophy-lead {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+}
+
+.philosophy-text p {
+    color: var(--gray-300);
+    margin-bottom: 1rem;
+}
+
+/* ================================
+   Lesson Types Section
+   ================================ */
+.lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.lesson-card {
+    background: var(--gray-900);
+    border: 1px solid var(--gray-800);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: all var(--transition-normal);
+}
+
+.lesson-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.lesson-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+.lesson-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.lesson-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.lesson-card > p {
+    color: var(--gray-400);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.lesson-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lesson-features li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--gray-300);
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--gray-800);
+}
+
+.lesson-features li:last-child {
+    border-bottom: none;
+}
+
+.lesson-features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+}
+
+/* ================================
+   Testimonials Section
+   (Reusing styles from livesound.css)
+   ================================ */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.testimonial-card {
+    background: var(--gray-900);
+    border: 1px solid var(--gray-800);
+    border-radius: 8px;
+    padding: 2rem;
+    position: relative;
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 4rem;
+    font-family: Georgia, serif;
+    color: var(--accent);
+    opacity: 0.3;
+    line-height: 1;
+}
+
+.testimonial-card blockquote {
+    margin: 0;
+    padding-left: 1rem;
+}
+
+.testimonial-card blockquote p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--gray-300);
+    font-style: italic;
+}
+
+.testimonial-author {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--gray-800);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.author-name {
+    font-weight: 600;
+    color: var(--white);
+}
+
+.author-role {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+}
+
+/* ================================
+   Booking Section
+   ================================ */
+.booking-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 2rem;
+}
+
+.booking-lead {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: var(--white);
+}
+
+.booking-info p {
+    color: var(--gray-400);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.booking-info .contact-email {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    transition: all var(--transition-normal);
+}
+
+.booking-info .contact-email:hover {
+    color: var(--white);
+    border-color: var(--white);
+}
+
+.booking-details h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+}
+
+.booking-details p {
+    color: var(--gray-400);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.booking-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.booking-details li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--gray-300);
+    font-size: 0.95rem;
+}
+
+.booking-details li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+}
+
+/* ================================
+   Responsive Adjustments
+   ================================ */
+@media (max-width: 768px) {
+    .teaching-hero {
+        min-height: 50vh;
+        padding-top: 100px;
+    }
+
+    .lessons-grid,
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .lesson-card,
+    .testimonial-card {
+        padding: 1.5rem;
+    }
+}
