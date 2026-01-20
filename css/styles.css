@@ -162,6 +162,16 @@ img {
     color: #ff6b00;
 }
 
+/* Gallery nav link uses green accent */
+.nav-menu a[href*="gallery"]::after {
+    background: #39ff14;
+}
+
+.nav-menu a[href*="gallery"]:hover,
+.nav-menu a[href*="gallery"].active {
+    color: #39ff14;
+}
+
 .nav-toggle {
     display: none;
     flex-direction: column;
