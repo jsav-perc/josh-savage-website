@@ -143,7 +143,8 @@ img {
 }
 
 /* Live Sound nav link uses blue accent */
-.nav-menu a[href*="livesound"]::after {
+.nav-menu a[href*="livesound"]::after,
+.nav-menu a[href*="livesound"]:hover::after {
     background: #00d4ff;
 }
 
@@ -153,7 +154,8 @@ img {
 }
 
 /* Teaching nav link uses orange accent */
-.nav-menu a[href*="teaching"]::after {
+.nav-menu a[href*="teaching"]::after,
+.nav-menu a[href*="teaching"]:hover::after {
     background: #ff6b00;
 }
 
@@ -163,7 +165,8 @@ img {
 }
 
 /* Gallery nav link uses green accent */
-.nav-menu a[href*="gallery"]::after {
+.nav-menu a[href*="gallery"]::after,
+.nav-menu a[href*="gallery"]:hover::after {
     background: #39ff14;
 }
 
