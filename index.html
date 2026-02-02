@@ -261,7 +261,21 @@
             <div class="contact-content">
                 <div class="contact-info">
                     <p class="contact-lead">Available for session work, touring, and production projects.</p>
-                    <a href="mailto:josh.percussion@live.com" class="contact-email">josh.percussion@live.com</a>
+                    <form action="https://formsubmit.co/josh.percussion@live.com" method="POST" class="contact-form">
+                        <input type="hidden" name="_subject" value="New contact from website">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="text" name="_honey" style="display:none">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
                 </div>
                 <div class="contact-socials">
                     <h3>Connect</h3>
