@@ -162,6 +162,16 @@ img {
     color: #ff6b00;
 }
 
+/* Gallery nav link uses green accent */
+.nav-menu a[href*="gallery"]::after {
+    background: #39ff14;
+}
+
+.nav-menu a[href*="gallery"]:hover,
+.nav-menu a[href*="gallery"].active {
+    color: #39ff14;
+}
+
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -802,6 +812,68 @@ img {
 .footer-tagline {
     font-size: 0.875rem;
     color: var(--gray-600);
+}
+
+.footer-link {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    transition: var(--transition-fast);
+}
+
+.footer-link:hover {
+    color: var(--accent);
+}
+
+/* ================================
+   Privacy Policy Page
+   ================================ */
+.privacy-section {
+    background: var(--black);
+}
+
+.privacy-content {
+    max-width: 800px;
+}
+
+.privacy-updated {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    margin-bottom: 2rem;
+}
+
+.privacy-content h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--white);
+}
+
+.privacy-content p {
+    color: var(--gray-400);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.privacy-content ul {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.privacy-content li {
+    color: var(--gray-400);
+    margin-bottom: 0.5rem;
+    list-style-type: disc;
+}
+
+.privacy-content a {
+    color: var(--accent);
+    border-bottom: 1px solid transparent;
+    transition: var(--transition-fast);
+}
+
+.privacy-content a:hover {
+    border-bottom-color: var(--accent);
 }
 
 /* ================================
