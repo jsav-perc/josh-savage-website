@@ -1,5 +1,29 @@
 // Josh Savage Website - Main JavaScript
 
+// Lightbox functions
+function openLightbox(src) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    if (lightbox && lightboxImg) {
+        lightboxImg.src = src;
+        lightbox.classList.add('active');
+    }
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        lightbox.classList.remove('active');
+    }
+}
+
+// Close lightbox on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeLightbox();
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     // Mobile Navigation Toggle
     const navToggle = document.querySelector('.nav-toggle');
