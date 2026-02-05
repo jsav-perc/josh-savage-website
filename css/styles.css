@@ -164,14 +164,12 @@ img {
     color: #ff6b00;
 }
 
-/* Gallery nav link uses green accent */
-.nav-menu a[href*="gallery"]::after,
+/* Gallery nav link uses green accent on hover */
 .nav-menu a[href*="gallery"]:hover::after {
     background: #39ff14;
 }
 
-.nav-menu a[href*="gallery"]:hover,
-.nav-menu a[href*="gallery"].active {
+.nav-menu a[href*="gallery"]:hover {
     color: #39ff14;
 }
 
