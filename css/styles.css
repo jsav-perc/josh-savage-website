@@ -649,6 +649,13 @@ img {
     color: var(--gray-500);
 }
 
+.gig-extra {
+    font-size: 0.8rem;
+    color: var(--gray-600);
+    margin-top: 0.25rem;
+    font-style: italic;
+}
+
 .gig-status {
     font-size: 0.75rem;
     text-transform: uppercase;

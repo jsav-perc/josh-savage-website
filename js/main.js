@@ -35,6 +35,14 @@ function extractUrl(text) {
     return urlMatch ? urlMatch[0] : null;
 }
 
+// Get description text without URLs
+function getDescriptionText(text) {
+    if (!text) return null;
+    // Remove URLs and trim
+    const cleaned = text.replace(/https?:\/\/[^\s<>"{}|\\^`[\]]+/g, '').trim();
+    return cleaned || null;
+}
+
 // Fetch and display gigs from Google Calendar
 async function fetchCalendarGigs() {
     const gigsList = document.querySelector('.gigs-list');
@@ -55,6 +63,7 @@ async function fetchCalendarGigs() {
                 const title = event.summary || 'TBA';
                 const venue = event.location || 'Venue TBA';
                 const ticketUrl = extractUrl(event.description);
+                const extraInfo = getDescriptionText(event.description);
 
                 return `
                     <div class="gig-item">
@@ -65,6 +74,7 @@ async function fetchCalendarGigs() {
                         <div class="gig-info">
                             <h4 class="gig-title">${title}</h4>
                             <p class="gig-venue">${venue}</p>
+                            ${extraInfo ? `<p class="gig-extra">${extraInfo}</p>` : ''}
                         </div>
                         ${ticketUrl
                             ? `<div class="gig-action"><a href="${ticketUrl}" target="_blank" rel="noopener" class="btn btn-small">Tickets</a></div>`
