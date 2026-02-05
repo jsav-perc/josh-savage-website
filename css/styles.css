@@ -659,9 +659,23 @@ img {
     display: none;
 }
 
-.gigs-show-more {
+.gigs-toggle {
     text-align: center;
     margin-top: 1.5rem;
+}
+
+.gigs-toggle-btn {
+    border: 1px solid var(--pink);
+    color: var(--pink);
+    background: transparent;
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.gigs-toggle-btn:hover {
+    background: var(--pink);
+    color: var(--black);
 }
 
 .gig-status {

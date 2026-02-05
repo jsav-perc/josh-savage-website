@@ -87,23 +87,23 @@ async function fetchCalendarGigs() {
                 `;
             }).join('');
 
-            // Add show more button if there are more than 3 gigs
-            const showMoreBtn = data.items.length > INITIAL_GIGS_SHOWN
-                ? `<button class="btn btn-outline show-more-gigs">Show More</button>`
-                : '';
-
             gigsList.innerHTML = gigsHtml;
 
-            // Add button after the gigs list
-            if (showMoreBtn) {
-                gigsList.insertAdjacentHTML('afterend', `<div class="gigs-show-more">${showMoreBtn}</div>`);
+            // Add show more/less button if there are more than 3 gigs
+            if (data.items.length > INITIAL_GIGS_SHOWN) {
+                gigsList.insertAdjacentHTML('afterend', `<div class="gigs-toggle"><button class="btn gigs-toggle-btn">Show More</button></div>`);
 
-                // Add click handler
-                document.querySelector('.show-more-gigs').addEventListener('click', function() {
-                    document.querySelectorAll('.gig-item.gig-hidden').forEach(el => {
-                        el.classList.remove('gig-hidden');
+                const toggleBtn = document.querySelector('.gigs-toggle-btn');
+                let expanded = false;
+
+                toggleBtn.addEventListener('click', function() {
+                    expanded = !expanded;
+                    document.querySelectorAll('.gig-item').forEach((el, index) => {
+                        if (index >= INITIAL_GIGS_SHOWN) {
+                            el.classList.toggle('gig-hidden', !expanded);
+                        }
                     });
-                    this.parentElement.remove();
+                    this.textContent = expanded ? 'Show Less' : 'Show More';
                 });
             }
         }
