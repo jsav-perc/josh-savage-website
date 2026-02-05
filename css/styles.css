@@ -655,6 +655,15 @@ img {
     margin-top: 0.25rem;
 }
 
+.gig-hidden {
+    display: none;
+}
+
+.gigs-show-more {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
 .gig-status {
     font-size: 0.75rem;
     text-transform: uppercase;

@@ -44,19 +44,21 @@ function getDescriptionText(text) {
 }
 
 // Fetch and display gigs from Google Calendar
+const INITIAL_GIGS_SHOWN = 3;
+
 async function fetchCalendarGigs() {
     const gigsList = document.querySelector('.gigs-list');
     if (!gigsList) return;
 
     const now = new Date().toISOString();
-    const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?key=${API_KEY}&timeMin=${now}&singleEvents=true&orderBy=startTime&maxResults=10`;
+    const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?key=${API_KEY}&timeMin=${now}&singleEvents=true&orderBy=startTime&maxResults=20`;
 
     try {
         const response = await fetch(url);
         const data = await response.json();
 
         if (data.items && data.items.length > 0) {
-            gigsList.innerHTML = data.items.map(event => {
+            const gigsHtml = data.items.map((event, index) => {
                 const date = new Date(event.start.dateTime || event.start.date);
                 const day = date.getDate();
                 const month = date.toLocaleString('en-GB', { month: 'short' }).toUpperCase();
@@ -64,9 +66,10 @@ async function fetchCalendarGigs() {
                 const venue = event.location || 'Venue TBA';
                 const ticketUrl = extractUrl(event.description);
                 const extraInfo = getDescriptionText(event.description);
+                const hiddenClass = index >= INITIAL_GIGS_SHOWN ? ' gig-hidden' : '';
 
                 return `
-                    <div class="gig-item">
+                    <div class="gig-item${hiddenClass}">
                         <div class="gig-date">
                             <span class="gig-day">${day}</span>
                             <span class="gig-month">${month}</span>
@@ -83,6 +86,26 @@ async function fetchCalendarGigs() {
                     </div>
                 `;
             }).join('');
+
+            // Add show more button if there are more than 3 gigs
+            const showMoreBtn = data.items.length > INITIAL_GIGS_SHOWN
+                ? `<button class="btn btn-outline show-more-gigs">Show More</button>`
+                : '';
+
+            gigsList.innerHTML = gigsHtml;
+
+            // Add button after the gigs list
+            if (showMoreBtn) {
+                gigsList.insertAdjacentHTML('afterend', `<div class="gigs-show-more">${showMoreBtn}</div>`);
+
+                // Add click handler
+                document.querySelector('.show-more-gigs').addEventListener('click', function() {
+                    document.querySelectorAll('.gig-item.gig-hidden').forEach(el => {
+                        el.classList.remove('gig-hidden');
+                    });
+                    this.parentElement.remove();
+                });
+            }
         }
         // If no events, keep the existing placeholder
     } catch (error) {
