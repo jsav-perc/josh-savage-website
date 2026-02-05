@@ -24,7 +24,76 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// Google Calendar Integration for Gigs
+const CALENDAR_ID = '76a21ba3e764396d118aa7f7e2ef83b428f7ae50b301aec3b3ec226a68d97d6c@group.calendar.google.com';
+const API_KEY = 'AIzaSyAS2ZpCX62QXbU-5kYLlPr7fw9RBYVZy_E';
+
+// Extract URL from text (for ticket links in description)
+function extractUrl(text) {
+    if (!text) return null;
+    const urlMatch = text.match(/https?:\/\/[^\s<>"{}|\\^`[\]]+/);
+    return urlMatch ? urlMatch[0] : null;
+}
+
+// Get description text without URLs
+function getDescriptionText(text) {
+    if (!text) return null;
+    // Remove URLs and trim
+    const cleaned = text.replace(/https?:\/\/[^\s<>"{}|\\^`[\]]+/g, '').trim();
+    return cleaned || null;
+}
+
+// Fetch and display gigs from Google Calendar
+async function fetchCalendarGigs() {
+    const gigsList = document.querySelector('.gigs-list');
+    if (!gigsList) return;
+
+    const now = new Date().toISOString();
+    const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?key=${API_KEY}&timeMin=${now}&singleEvents=true&orderBy=startTime&maxResults=10`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.items && data.items.length > 0) {
+            gigsList.innerHTML = data.items.map(event => {
+                const date = new Date(event.start.dateTime || event.start.date);
+                const day = date.getDate();
+                const month = date.toLocaleString('en-GB', { month: 'short' }).toUpperCase();
+                const title = event.summary || 'TBA';
+                const venue = event.location || 'Venue TBA';
+                const ticketUrl = extractUrl(event.description);
+                const extraInfo = getDescriptionText(event.description);
+
+                return `
+                    <div class="gig-item">
+                        <div class="gig-date">
+                            <span class="gig-day">${day}</span>
+                            <span class="gig-month">${month}</span>
+                        </div>
+                        <div class="gig-info">
+                            <h4 class="gig-title">${title}</h4>
+                            <p class="gig-venue">${venue}</p>
+                            ${extraInfo ? `<p class="gig-extra">${extraInfo}</p>` : ''}
+                        </div>
+                        ${ticketUrl
+                            ? `<div class="gig-action"><a href="${ticketUrl}" target="_blank" rel="noopener" class="btn btn-small">Tickets</a></div>`
+                            : ''
+                        }
+                    </div>
+                `;
+            }).join('');
+        }
+        // If no events, keep the existing placeholder
+    } catch (error) {
+        console.error('Failed to fetch gigs:', error);
+        // Keep existing placeholder on error
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Fetch gigs from Google Calendar
+    fetchCalendarGigs();
     // Mobile Navigation Toggle
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
